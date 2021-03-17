@@ -1,0 +1,15 @@
+.card {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #DDD;
+}
+
+.card:hover {
+  box-shadow: 1px 1px #BBB;
+}
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/
