@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-
 import { products } from '../products';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-product-list',
@@ -8,7 +8,8 @@ import { products } from '../products';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
-  products = products;
+  db = AngularFireDatabase;
+  products = this.db.list('products').limitToLast(100);;
 
   share() {
     window.alert('The product has been shared!');
