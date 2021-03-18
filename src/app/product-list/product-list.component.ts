@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
-import { products } from '../products';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Component } from "@angular/core";
+import { AngularFireDatabase } from "@angular/fire/database";
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: "app-product-list",
+  templateUrl: "./product-list.component.html",
+  styleUrls: ["./product-list.component.css"]
 })
 export class ProductListComponent {
   db = AngularFireDatabase;
-  products = this.db.list('products').limitToLast(100);;
+  products = this.db.list<Product>("products").limitToLast(100);
 
   share() {
-    window.alert('The product has been shared!');
+    window.alert("The product has been shared!");
   }
 
   onNotify() {
-    window.alert('You will be notified when the product goes on sale');
+    window.alert("You will be notified when the product goes on sale");
   }
 }
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
