@@ -1,5 +1,3 @@
-import { AngularFireModule } from "@angular/fire";
-
 export const environment = {
   production: false,
   firebase: {

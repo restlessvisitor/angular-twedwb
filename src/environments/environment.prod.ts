@@ -1,5 +1,3 @@
-import { AngularFireModule } from "@angular/fire";
-
 export const environment = {
   production: true,
   firebase: {
@@ -12,7 +10,6 @@ export const environment = {
     appId: "1:696226281787:web:f71e76067c86d5a5121f1e"
   }
 };
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
