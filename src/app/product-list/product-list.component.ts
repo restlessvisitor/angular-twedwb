@@ -13,12 +13,10 @@ export class ProductListComponent {
   constructor(private db: AngularFirestore) {}
 
   ngOnInit() {
-    console.log("ngOnInit");
     this.db
       .collection<Product>("/products")
       .valueChanges()
       .subscribe(values => {
-        values.forEach(value => console.log(value));
         this.products = values;
       });
   }
