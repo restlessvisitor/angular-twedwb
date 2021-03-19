@@ -1,10 +1,16 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import { AngularFireModule } from "@angular/fire";
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDKEGtS-RWYsEB1FQf6ICgwm1BxiU0SZ2g",
+    authDomain: "test-b69a8.firebaseapp.com",
+    databaseURL: "https://test-b69a8.firebaseio.com",
+    messagingSenderId: "1018366672379",
+    appId: "1:1018366672379:web:654ef9dbae30254ea29f5e"
+  }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
