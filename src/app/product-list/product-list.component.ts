@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { Product } from "./product";
 
 @Component({
   selector: "app-product-list",
@@ -7,21 +8,19 @@ import { AngularFirestore } from "@angular/fire/firestore";
   styleUrls: ["./product-list.component.css"]
 })
 export class ProductListComponent {
-  products;
+  products: Product[];
 
   constructor(private db: AngularFirestore) {}
 
   ngOnInit() {
     console.log("ngOnInit");
     this.db
-      .collection("/products")
+      .collection<Product>("/products")
       .valueChanges()
-          .subscribe(values => {
-           console.log("foo");
-            values.forEach(value => console.log(value));
-            console.log(values);
-            this.products = values;
-         });
+      .subscribe(values => {
+        values.forEach(value => console.log(value));
+        this.products = values;
+      });
   }
 
   share() {
