@@ -7,8 +7,11 @@ import { AngularFireDatabase } from "@angular/fire/database";
   styleUrls: ["./product-list.component.css"]
 })
 export class ProductListComponent {
-  db = AngularFireDatabase;
-  products = this.db.list<Product>("products").limitToLast(100);
+  products;
+
+  constructor(db: AngularFireDatabase) {
+    this.products = db.list("/products");
+  }
 
   share() {
     window.alert("The product has been shared!");
