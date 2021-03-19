@@ -3,11 +3,13 @@ import { AngularFireModule } from "@angular/fire";
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyDKEGtS-RWYsEB1FQf6ICgwm1BxiU0SZ2g",
-    authDomain: "test-b69a8.firebaseapp.com",
-    databaseURL: "https://test-b69a8-default-rtdb.europe-west1.firebasedatabase.app",
-    messagingSenderId: "1018366672379",
-    appId: "1:1018366672379:web:654ef9dbae30254ea29f5e"
+    apiKey: "AIzaSyAF8xXyyVQcwY4G9NKteYNgRVdOHyllh5A",
+    authDomain: "angulartest-99480.firebaseapp.com",
+    databaseURL: "https://angulartest-99480.europe-west3.firebaseio.com/",
+    projectId: "angulartest-99480",
+    storageBucket: "angulartest-99480.appspot.com",
+    messagingSenderId: "696226281787",
+    appId: "1:696226281787:web:f71e76067c86d5a5121f1e"
   }
 };
 

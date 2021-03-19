@@ -9,8 +9,18 @@ import { AngularFireDatabase } from "@angular/fire/database";
 export class ProductListComponent {
   products;
 
-  constructor(db: AngularFireDatabase) {
-    this.products = db.list("/products");
+  constructor(private db: AngularFireDatabase) {}
+
+  ngOnInit() {
+    console.log("ngOnInit");
+    this.db
+      .list("/products")
+      .valueChanges()
+      .subscribe(values => {
+        values.forEach(value => console.log(value));
+        console.log(values);
+        this.products = values;
+      });
   }
 
   share() {
