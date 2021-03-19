@@ -5,12 +5,12 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyDKEGtS-RWYsEB1FQf6ICgwm1BxiU0SZ2g",
     authDomain: "test-b69a8.firebaseapp.com",
-    databaseURL: "https://test-b69a8.firebaseio.com",
+    databaseURL:
+      "https://test-b69a8-default-rtdb.europe-west1.firebasedatabase.app",
     messagingSenderId: "1018366672379",
     appId: "1:1018366672379:web:654ef9dbae30254ea29f5e"
   }
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -20,7 +20,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
