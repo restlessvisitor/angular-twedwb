@@ -21,11 +21,13 @@ import { DatabaseService } from "./database.service";
 import { AuthService } from "./auth.service";
 
 import { LayoutModule } from "@angular/cdk/layout";
-import { MatBadgeModule } from '@angular/material/badge';
+import { MatBadgeModule } from "@angular/material/badge";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from "@angular/material/card";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatInputModule } from "@angular/material/input";
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatInputModule,
+    MatTableModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },

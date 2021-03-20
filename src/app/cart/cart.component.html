@@ -1,7 +1,7 @@
 <h3>Cart</h3>
 
 <p>
-  <a routerLink="/shipping">Shipping Prices</a>
+  <a mat-raised-button routerLink="/shipping">Shipping Prices</a>
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
@@ -10,21 +10,18 @@
 </div>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input id="name" type="text" matInput placeholder="Name" formControlName="name">
+      <mat-hint>Your Name</mat-hint>
+    </mat-form-field>
 
-  <div>
-    <label for="name">
-      Name
-    </label>
-    <input id="name" type="text" formControlName="name">
-  </div>
-
-  <div>
-    <label for="address">
-      Address
-    </label>
-    <input id="address" type="text" formControlName="address">
-  </div>
-
-  <button class="button" type="submit">Purchase</button>
-
+    <mat-form-field>
+      <mat-label>Address</mat-label>
+      <input id="address" type="text" matInput placeholder="Address" formControlName="address">
+      <mat-hint>Your Address</mat-hint>
+    </mat-form-field>
+  </p>
+  <button mat-raised-button type="submit">Purchase</button>
 </form>

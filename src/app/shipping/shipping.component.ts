@@ -8,6 +8,7 @@ import { CartService } from '../cart.service';
 })
 export class ShippingComponent implements OnInit {
   shippingCosts = this.cartService.getShippingPrices();
+  displayedColumns: string[] = ['type', 'price'];
   
   constructor(private cartService: CartService) { }
 
