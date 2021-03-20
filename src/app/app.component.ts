@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: "app-root",
@@ -11,9 +10,13 @@ export class AppComponent {
   private user: any = null;
 
   constructor(private afAuth: AngularFireAuth) {
-    afAuth.signInAnonymously().then((user: any) => {
+    afAuth.signInAnonymously().then((user) => {
       this.user = user;
-    });
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.error(errorCode, errorMessage);
+  });
   }
 }
 
