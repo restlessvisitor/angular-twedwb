@@ -17,7 +17,13 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment.prod";
-import { DatabaseService } from './database.service';
+import { DatabaseService } from "./database.service";
+import { AuthService } from "./auth.service";
+
+import { LayoutModule } from "@angular/cdk/layout";
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   imports: [
@@ -27,6 +33,10 @@ import { DatabaseService } from './database.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    LayoutModule,
+    MatBadgeModule,
+    MatIconModule,
+    MatButtonModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
@@ -44,7 +54,7 @@ import { DatabaseService } from './database.service';
     ShippingComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CartService, DatabaseService]
+  providers: [CartService, DatabaseService, AuthService]
 })
 export class AppModule {}
 
