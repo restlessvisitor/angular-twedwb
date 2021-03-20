@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { AngularFirestore } from "@angular/fire/firestore";
-import { Product } from "./product";
+import { DatabaseService } from "../database.service";
+import { Product } from "../product";
 
 @Component({
   selector: "app-product-list",
@@ -10,15 +10,11 @@ import { Product } from "./product";
 export class ProductListComponent {
   products: Product[];
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: DatabaseService) {}
 
   ngOnInit() {
-    this.db
-      .collection<Product>("/products")
-      .valueChanges()
-      .subscribe(values => {
-        this.products = values;
-      });
+    this.products = this.db.getProducts();
+    console.log(this.products);
   }
 
   share() {
