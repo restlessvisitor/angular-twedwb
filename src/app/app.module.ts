@@ -14,7 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ShippingComponent } from "./shipping/shipping.component";
 
 import { AngularFireModule } from "@angular/fire";
-import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment.prod";
 
 @NgModule({

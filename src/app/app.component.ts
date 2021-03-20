@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component } from "@angular/core";
+import { AngularFireAuth } from "angularfire2/auth";
+import * as firebase from "firebase/app";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
   private user: any = null;
-  
-  constructor(private firebase: AngularFireAuth) {
-    firebase.auth.signInAnonymously().then((user) => {
-      this.user = user;
-    }
+
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth
+      .auth
+      .signInAnonymously()
+      .then((user: any) => {
+        this.user = user;
+      });
   }
 }
-
 
 /*
 Copyright Google LLC. All Rights Reserved.
