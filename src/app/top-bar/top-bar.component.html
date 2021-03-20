@@ -2,12 +2,18 @@
   <h1>My Store</h1>
 </a>
 
-<a
+<a *ngIf="getCartCount() > 0"
   routerLink="/cart"
   mat-raised-button
   [matBadge]="getCartCount()"
   matBadgePosition="above after"
   matBadgeColor="accent"
+  class="button fancy-button"
+>
+  <i class="material-icons">shopping_cart</i>
+</a>
+<a *ngIf="getCartCount() == 0"
+  routerLink="/cart"
   class="button fancy-button"
 >
   <i class="material-icons">shopping_cart</i>
