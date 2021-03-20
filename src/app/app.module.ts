@@ -15,6 +15,7 @@ import { ShippingComponent } from "./shipping/shipping.component";
 
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from "../environments/environment.prod";
 
 @NgModule({
@@ -24,6 +25,7 @@ import { environment } from "../environments/environment.prod";
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
