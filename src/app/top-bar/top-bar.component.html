@@ -2,14 +2,15 @@
   <h1>My Store</h1>
 </a>
 
-<a routerLink="/cart" 
-        mat-raised-button
-        [matBadge]="getCartCount()"
-        matBadgePosition="above after"
-        matBadgeColor="primary"
-        color="accent" 
-        class="button fancy-button"
-        >
+<a
+  routerLink="/cart"
+  mat-raised-button
+  [matBadge]="getCartCount()"
+  matBadgePosition="above after"
+  matBadgeColor="accent"
+  color="primary"
+  class="button fancy-button"
+>
   <i class="material-icons">shopping_cart</i>
 </a>
 
