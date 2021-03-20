@@ -29,6 +29,8 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
 
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { MatTableModule } from "@angular/material/table";
     MatToolbarModule,
     MatInputModule,
     MatTableModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
