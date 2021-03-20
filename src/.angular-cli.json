@@ -1,7 +1,6 @@
 {
   "apps": [{
     "styles": [
-      "styles.scss",
       "theme.scss",
       ]
   }]
