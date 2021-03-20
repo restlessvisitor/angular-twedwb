@@ -70,7 +70,7 @@ label {
   text-transform: uppercase;
 }
 
-/* Button */
+/* Button 
 .button,
 button {
   display: inline-flex;
@@ -95,8 +95,9 @@ button:disabled {
   opacity: 0.5;
   cursor: auto;
 }
+*/
 
-/* Fancy Button */
+/* Fancy Button 
 
 .fancy-button {
   background-color: white;
@@ -107,8 +108,8 @@ button:disabled {
   color: #1976d2;
   padding-right: 4px;
 }
-
-/* Top Bar */
+*/
+/* Top Bar 
 
 app-top-bar {
   width: 100%;
@@ -125,6 +126,7 @@ app-top-bar h1 {
   color: white;
   margin: 0;
 }
+*/
 
 /* Checkout Cart, Shipping Prices */
 

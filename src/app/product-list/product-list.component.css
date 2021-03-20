@@ -1,13 +1,9 @@
-.card {
+mat-card {
   margin: 10px;
   padding: 10px;
   border: 1px solid #DDD;
-  background-color: #EEE;
 }
 
-.card:hover {
-  box-shadow: 1px 1px #BBB;
-}
 
 /*
 Copyright Google LLC. All Rights Reserved.

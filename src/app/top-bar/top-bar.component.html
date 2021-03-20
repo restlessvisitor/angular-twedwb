@@ -1,6 +1,7 @@
-<a [routerLink]="['/']">
-  <h1>My Store</h1>
-</a>
+<mat-toolbar class="toolbar" color="primary">
+<a class="appname" [routerLink]="['/']">My Store</a>
+
+<span class="spacer"></span>
 
 <a *ngIf="getCartCount() > 0"
   routerLink="/cart"
@@ -8,16 +9,16 @@
   [matBadge]="getCartCount()"
   matBadgePosition="above after"
   matBadgeColor="accent"
-  class="button fancy-button"
 >
-  <i class="material-icons">shopping_cart</i>
+  <mat-icon>shopping_cart</mat-icon>
 </a>
 <a *ngIf="getCartCount() == 0"
+  mat-raised-button
   routerLink="/cart"
-  class="button fancy-button"
 >
-  <i class="material-icons">shopping_cart</i>
+  <mat-icon>shopping_cart</mat-icon>
 </a>
+</mat-toolbar>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.

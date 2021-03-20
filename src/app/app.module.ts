@@ -24,6 +24,8 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -37,6 +39,8 @@ import { MatButtonModule } from "@angular/material/button";
     MatBadgeModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
