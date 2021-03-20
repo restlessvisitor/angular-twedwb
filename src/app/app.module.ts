@@ -13,9 +13,8 @@ import { CartComponent } from "./cart/cart.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ShippingComponent } from "./shipping/shipping.component";
 
-import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireModule } from "@angular/fire";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment.prod";
 
 @NgModule({
@@ -24,7 +23,7 @@ import { environment } from "../environments/environment.prod";
     HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
@@ -44,11 +43,7 @@ import { environment } from "../environments/environment.prod";
   bootstrap: [AppComponent],
   providers: [CartService]
 })
-export class AppModule {
-  constructor(private firebase: AngularFireAuthModule) {
-    firebase.auth().signInAnonymously()
-  }
-}
+export class AppModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.
