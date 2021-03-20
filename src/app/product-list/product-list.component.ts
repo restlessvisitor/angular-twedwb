@@ -13,8 +13,9 @@ export class ProductListComponent {
   constructor(private db: DatabaseService) {}
 
   ngOnInit() {
-    this.products = this.db.getProducts();
-    console.log(this.products);
+    this.db.reloadProducts((products) => {
+      this.products = products;
+    });
   }
 
   share() {

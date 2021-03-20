@@ -6,12 +6,15 @@ import { Product } from "./product";
 export class DatabaseService {
   private products: Product[];
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore) {}
+
+  reloadProducts(trigger: (products: Product[]) => void) {
     this.db
       .collection<Product>("/products")
       .valueChanges()
       .subscribe(values => {
         this.products = values;
+        trigger(values);
       });
   }
 
