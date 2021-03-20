@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../cart.service';
-import { DatabaseService } from '../database.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { CartService } from "../cart.service";
+import { DatabaseService } from "../database.service";
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: "app-product-details",
+  templateUrl: "./product-details.component.html",
+  styleUrls: ["./product-details.component.css"]
 })
 export class ProductDetailsComponent implements OnInit {
   product;
@@ -14,19 +14,21 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
-    private database: DatabaseService) { }
+    private database: DatabaseService
+  ) {}
 
   ngOnInit() {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = Number(routeParams.get('productId'));
+    const productIdFromRoute = Number(routeParams.get("productId"));
 
     // Find the product that correspond with the id provided in route.
-    this.product = this.database.getProducts().find(product => product.id === productIdFromRoute);
+    this.database.reloadProducts(products => {
+      this.product = products.find(prod => prod.id == productIdFromRoute);
+    });
   }
 
   addToCart(product) {
     this.cartService.addToCart(product);
-    window.alert('Your product has been added to the cart!');
   }
 }
