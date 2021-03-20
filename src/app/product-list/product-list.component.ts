@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { AngularFirestore } from "angularfire2/firestore";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Product } from "./product";
 
 @Component({
   selector: "app-product-list",
