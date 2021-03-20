@@ -4,7 +4,7 @@
 
 <a routerLink="/cart" 
         mat-raised-button
-        [matBadge]="3"
+        [matBadge]="getCartCount()"
         matBadgePosition="above after"
         matBadgeColor="primary"
         color="accent" 
