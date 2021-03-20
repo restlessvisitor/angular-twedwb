@@ -15,6 +15,7 @@ import { ShippingComponent } from "./shipping/shipping.component";
 
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment.prod";
 
 @NgModule({
@@ -43,7 +44,11 @@ import { environment } from "../environments/environment.prod";
   bootstrap: [AppComponent],
   providers: [CartService]
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private firebase: AngularFireAuthModule) {
+    firebase.auth().signInAnonymously()
+  }
+}
 
 /*
 Copyright Google LLC. All Rights Reserved.
