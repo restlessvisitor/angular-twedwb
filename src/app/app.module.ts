@@ -9,7 +9,7 @@ import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductAlertsComponent } from "./product-alerts/product-alerts.component";
 import { ProductDetailsComponent } from "./product-details/product-details.component";
 import { CartService } from "./cart.service";
-import { CartComponent } from "./cart/cart.component";
+import { CartComponent, CartRemoveItemDialog } from "./cart/cart.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ShippingComponent } from "./shipping/shipping.component";
 
@@ -28,7 +28,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -49,7 +49,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatInputModule,
     MatTableModule,
     BrowserAnimationsModule,
-    MatDialog,
+    MatDialogModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
@@ -64,7 +64,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ProductAlertsComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent
+    ShippingComponent,
+    CartRemoveItemDialog
   ],
   bootstrap: [AppComponent],
   providers: [CartService, DatabaseService, AuthService]
