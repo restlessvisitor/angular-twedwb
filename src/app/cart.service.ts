@@ -29,7 +29,6 @@ export class CartService {
 
         // notify listeners
         this.listeners.forEach(listener => {
-          console.log("Notifying cart listener");
           listener.notifyChange(this.items);
         });
       });
@@ -37,22 +36,17 @@ export class CartService {
 
   getItems(result: (cart: Product[]) => void) {
     var userId = this.authService.getUserId();
-    console.log("userid", userId);
     return this.db
       .collection<CartItem>("/cart", ref => ref.where("userId", "==", userId))
       .valueChanges()
       .subscribe(items => {
-        console.log("cart", items);
         this.db
           .collection<Product>("/products")
           .valueChanges()
           .subscribe(products => {
-            console.log("products", products);
             products = items.map<Product>(item => {
               return products.find(product => item.productId == product.id)
             });
-
-            console.log("productsafter", products);
 
             this.items = items.map<Product>(item => {
               return products.find(product => item.productId == product.id)

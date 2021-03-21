@@ -17,19 +17,16 @@ export class TopBarComponent implements CartListener, AuthListener {
 
   notifyUserChanged(userId: string): void {
     this.cart.getItems(items => {
-      console.log("cartcount", items.length);
       this.cartCount = items.length;
     });
   }
 
   notifyChange(products: Product[]): void {
-    console.log("cartcount", products.length);
     this.cartCount = products.length;
   }
 
   ngOnInit() {
     this.cart.getItems(items => {
-      console.log("cartcount", items.length);
       this.cartCount = items.length;
     });
 
