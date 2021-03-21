@@ -56,7 +56,6 @@ export class CartService {
   }
 
   clearCart(): void {
-    console.log("clearCart");
     var userId = this.authService.getUserId();
     var subscription = this.db
       .collection<CartItem>("/cart", ref => ref.where("userId", "==", userId))
