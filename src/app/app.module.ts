@@ -28,6 +28,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
+import { MatDialog } from '@angular/material/dialog';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -48,6 +49,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatInputModule,
     MatTableModule,
     BrowserAnimationsModule,
+    MatDialog,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },

@@ -3,6 +3,7 @@ import { CartService } from "../cart.service";
 import { FormBuilder } from "@angular/forms";
 import { Product } from "../product";
 import { animate, state, style, transition, trigger } from "@angular/animations";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: "app-cart",
@@ -27,7 +28,8 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -44,6 +46,13 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(product: Product) {
+    this.dialog.open(CartRemoveItemDialog);
     this.cartService.removeItem(product);
   }
 }
+
+@Component({
+  selector: 'cart-remove-item-dialog',
+  templateUrl: 'cart-remove-item-dialog.html',
+})
+export class CartRemoveItemDialog {}
