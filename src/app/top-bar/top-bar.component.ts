@@ -1,18 +1,28 @@
 import { Component } from "@angular/core";
+import { CartListener } from "../cart-listener";
 import { CartService } from "../cart.service";
+import { Product } from "../product";
 
 @Component({
   selector: "app-top-bar",
   templateUrl: "./top-bar.component.html",
   styleUrls: ["./top-bar.component.css"]
 })
-export class TopBarComponent {
+export class TopBarComponent implements CartListener {
+  cartCount: number;
+
   constructor(private cart: CartService) {}
 
-  getCartCount() {
-    this.cart.getItems((items) => {
-      return items.length;
+  notifyChange(products: Product[]): void {
+    this.cartCount = products.length;
+  }
+
+  ngOnInit() {
+    this.cart.getItems(items => {
+      this.cartCount = items.length;
     });
+
+    this.cart.addCartListener(this);
   }
 }
 
