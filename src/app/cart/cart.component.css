@@ -2,19 +2,8 @@ table {
   width: 90vw;
 }
 
-.mat-column-action {
-  word-wrap: break-word !important;
-  white-space: unset !important;
-  flex: 0 0 5% !important;
-  width: 5% !important;
-  overflow-wrap: break-word;
-
-  word-break: break-word;
-
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
+th.mat-column-name, th.mat-column-price {
+  border-bottom-width: 1px;
 }
 
 .mat-column-name {
@@ -30,6 +19,8 @@ table {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+
+  border-bottom-width: 0px;
 }
 
 .mat-column-price {
@@ -45,4 +36,41 @@ table {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+
+  border-bottom-width: 0px;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+tr.example-element-row td {
+  border-bottom-width: 0px;
+}
+
+tr.example-detail-row {
+  height: 0px;
+  border-bottom: 1px;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.row-description {
+  flex: auto;
+  margin-bottom: 10px;
 }
