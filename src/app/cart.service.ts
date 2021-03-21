@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { Shipping } from "./shipping";
 
 @Injectable()
 export class CartService {
-  items = [];
+  private items = [];
+  private shipping: Shipping[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private db: AngularFirestore) {}
 
   addToCart(product) {
     this.items.push(product);
@@ -20,7 +22,13 @@ export class CartService {
     return this.items;
   }
 
-  getShippingPrices() {
-    return this.http.get<{type: string, price: number}[]>('/assets/shipping.json');
-  }  
+  getShippingPrices(trigger: (shipping: Shipping[]) => void) {
+    this.db
+      .collection<Shipping>("/shipping")
+      .valueChanges()
+      .subscribe(values => {
+        this.shipping = values;
+        trigger(values);
+      });
+  }
 }

@@ -10,7 +10,7 @@ export class TopBarComponent {
   constructor(private cart: CartService) {}
 
   getCartCount() {
-    return this.cart.items.length;
+    return this.cart.getItems().length;
   }
 }
 
