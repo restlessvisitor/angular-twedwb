@@ -25,8 +25,6 @@ export class CartService {
         userId: this.authService.getUserId()
       })
       .then(() => {
-        this.items.push(product);
-
         // notify listeners
         this.listeners.forEach(listener => {
           listener.notifyChange(this.items);
