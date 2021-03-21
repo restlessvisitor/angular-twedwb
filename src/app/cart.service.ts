@@ -43,11 +43,11 @@ export class CartService {
           .valueChanges()
           .subscribe(products => {
             products = items.map<Product>(item => {
-              return products.find(product => item.productId == product.id)
+              return products.find(product => item.productId == product.id);
             });
 
             this.items = items.map<Product>(item => {
-              return products.find(product => item.productId == product.id)
+              return products.find(product => item.productId == product.id);
             });
 
             result(products);
@@ -55,12 +55,27 @@ export class CartService {
       });
   }
 
-  clearCart() {
-    this.items = [];
-    return this.items;
+  clearCart(): void {
+    console.log("clearCart");
+    var userId = this.authService.getUserId();
+    var subscription = this.db
+      .collection<CartItem>("/cart", ref => ref.where("userId", "==", userId))
+      .valueChanges({ idField: "id" })
+      .subscribe(items => {
+        items.forEach(item => {
+          this.db
+            .collection<CartItem>("/cart")
+            .doc(item.id)
+            .delete();
+        });
+
+        subscription.unsubscribe();
+      });
+
+    this.getItems(items => (this.items = items));
   }
 
-  getShippingPrices(trigger: (shipping: Shipping[]) => void) {
+  getShippingPrices(trigger: (shipping: Shipping[]) => void): void {
     this.db
       .collection<Shipping>("/shipping")
       .valueChanges()
