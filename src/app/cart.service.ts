@@ -74,6 +74,25 @@ export class CartService {
     this.getItems(items => (this.items = items));
   }
 
+  removeItem(product: Product) {
+    var userId = this.authService.getUserId();
+    var subscription = this.db
+      .collection<CartItem>("/cart", ref => ref.where("userId", "==", userId))
+      .valueChanges({ idField: "id" })
+      .subscribe(items => {
+        items.filter(item => item.productId == product.id).forEach(item => {
+          this.db
+            .collection<CartItem>("/cart")
+            .doc(item.id)
+            .delete();
+        });
+
+        subscription.unsubscribe();
+      });
+
+    this.getItems(items => (this.items = items));
+  }
+
   getShippingPrices(trigger: (shipping: Shipping[]) => void): void {
     this.db
       .collection<Shipping>("/shipping")

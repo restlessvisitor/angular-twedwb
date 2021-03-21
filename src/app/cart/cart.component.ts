@@ -10,7 +10,7 @@ import { Product } from "../product";
 })
 export class CartComponent implements OnInit {
   items: Product[];
-  displayedColumns: string[] = ["name", "price"];
+  displayedColumns: string[] = ["actions", "name", "price"];
   checkoutForm = this.formBuilder.group({
     name: "",
     address: ""
@@ -32,5 +32,9 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
     console.warn("Your order has been submitted", this.checkoutForm.value);
     this.checkoutForm.reset();
+  }
+
+  removeItem(product: Product) {
+    this.cartService.removeItem(product);
   }
 }
