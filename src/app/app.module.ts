@@ -29,6 +29,7 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -50,6 +51,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatTableModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },

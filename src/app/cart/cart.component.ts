@@ -10,6 +10,7 @@ import {
   trigger
 } from "@angular/animations";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-cart",
@@ -38,7 +39,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -60,6 +62,8 @@ export class CartComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result.event == "yes") {
         this.cartService.removeItem(product);
+        this.snackBar.open(product.name + " removed", "Close", {
+          duration: 2000});
       }
     });
   }
