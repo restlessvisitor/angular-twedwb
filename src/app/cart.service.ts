@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { AuthService } from "./auth.service";
+import { CartItem } from "./cartitem";
+import { Product } from "./product";
 import { Shipping } from "./shipping";
 
 @Injectable()
@@ -7,14 +10,37 @@ export class CartService {
   private items = [];
   private shipping: Shipping[];
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private authService: AuthService) {}
 
-  addToCart(product) {
-    this.items.push(product);
+  addToCart(product: Product) {
+    this.db
+      .collection("/cart")
+      .add({
+        productId: product.id,
+        userId: this.authService.getUserId()
+      })
+      .then(item => {
+        this.items.push(product);
+      });
   }
 
-  getItems() {
-    return this.items;
+  getItems(result: (cart: Product[]) => void) {
+    return this.db
+      .collection<CartItem>("/cart")
+      .valueChanges()
+      .subscribe(items => {
+        this.items = items;
+        this.db
+          .collection<Product>("/products")
+          .valueChanges()
+          .subscribe(products => {
+            result(products.filter((product) => {
+              items.find((item) => {
+                item.productId == product.id
+              }) != null;
+            }));
+          });
+      });
   }
 
   clearCart() {

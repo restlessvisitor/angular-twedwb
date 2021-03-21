@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
+import firebase from "firebase"
 
 @Injectable()
 export class AuthService {
-  private user: any = null;
+  private credential: firebase.auth.UserCredential = null;
 
   constructor(private afAuth: AngularFireAuth) {
   }
 
   signInAnonymously() {
     this.afAuth.signInAnonymously().then((user) => {
-      this.user = user;
+      this.credential = user;
     }).catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -20,12 +21,16 @@ export class AuthService {
 
   signOut() {
     this.afAuth.signOut().then(() => {
-      this.user = null;
+      this.credential = null;
     });
 
   }
 
   getUser() {
-    return this.user;
+    return this.credential;
+  }
+
+  getUserId() {
+    return this.credential.user.uid;
   }
 }
