@@ -8,8 +8,8 @@ import { Shipping } from "./shipping";
 
 @Injectable()
 export class CartService {
-  private items: Product[] = null;
-  private listeners: CartListener[];
+  private items: Product[] = [];
+  private listeners: CartListener[] = [];
 
   constructor(private db: AngularFirestore, private authService: AuthService) {}
 
@@ -29,29 +29,35 @@ export class CartService {
 
         // notify listeners
         this.listeners.forEach(listener => {
+          console.log("Notifying cart listener");
           listener.notifyChange(this.items);
         });
       });
   }
 
   getItems(result: (cart: Product[]) => void) {
+    var userId = this.authService.getUserId();
+    console.log("userid", userId);
     return this.db
-      .collection<CartItem>("/cart")
+      .collection<CartItem>("/cart", ref => ref.where("userId", "==", userId))
       .valueChanges()
       .subscribe(items => {
+        console.log("cart", items);
         this.db
           .collection<Product>("/products")
           .valueChanges()
           .subscribe(products => {
-            var product: Product;
-            products.filter(product => {
-              items.find(item => {
-                item.productId == product.id;
-              }) != null;
+            console.log("products", products);
+            products = items.map<Product>(item => {
+              return products.find(product => item.productId == product.id)
             });
-            this.items = items.map(item => {
-              return product;
+
+            console.log("productsafter", products);
+
+            this.items = items.map<Product>(item => {
+              return products.find(product => item.productId == product.id)
             });
+
             result(products);
           });
       });
