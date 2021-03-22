@@ -49,7 +49,6 @@ export class DrawerComponent implements OnInit, AuthListener {
 
   notifyUserChanged(user: firebase.auth.UserCredential): void {
     this.userCredential = user;
-    console.log("user", this.userCredential);
   }
 
   register() {

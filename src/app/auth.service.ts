@@ -28,7 +28,6 @@ export class AuthService {
 
   signIn(email: string, pwd: string) : void {
     this.afAuth.signInWithEmailAndPassword(email, pwd).then((user) => {
-      console.log("USER", user);
       this.credential = user;
       this.listeners.forEach(listener => listener.notifyUserChanged(user));
 
