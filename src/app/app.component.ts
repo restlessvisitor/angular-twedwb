@@ -1,16 +1,28 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
+import { MatDrawer } from "@angular/material/sidenav";
 import { AuthService } from "./auth.service";
+import { DrawerListener } from "./drawer-listener";
+import { DrawerService } from "./drawer.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  constructor(private auth: AuthService) {}
+export class AppComponent implements DrawerListener{
+  @ViewChild('drawer') private drawer: MatDrawer;
+
+  constructor(private auth: AuthService, private drawerService: DrawerService) {}
 
   ngOnInit() {
+    this.drawerService.addDrawerListener(this);
     this.auth.signInAnonymously();
+  }
+
+  toggleDrawer(): void {
+    console.log("drawer", this.drawer.opened);
+    this.drawer.toggle();
+    console.log("drawer", this.drawer.opened);
   }
 }
 

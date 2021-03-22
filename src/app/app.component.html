@@ -1,7 +1,9 @@
 <app-top-bar></app-top-bar>
 
-<mat-drawer-container autosize>
-  <app-drawer></app-drawer>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" class="drawer">
+    <app-drawer></app-drawer>
+  </mat-drawer>
   <mat-drawer-content>
     <div class="container">
       <router-outlet></router-outlet>
