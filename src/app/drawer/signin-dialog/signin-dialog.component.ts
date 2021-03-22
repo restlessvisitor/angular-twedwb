@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -15,16 +15,20 @@ export class SigninDialogComponent implements OnInit {
   
   constructor(
     public dialogRef: MatDialogRef<SigninDialogComponent>,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder
     ) {}
 
   ngOnInit(): void {}
 
   onCancel() {
-    this.dialogRef.close({ event: "cancel" });
+    this.dialogRef.close({ result: "cancel" });
   }
 
   onSubmit() {
-    this.dialogRef.close({ event: "login" });
+    this.dialogRef.close({ 
+      result: "login", 
+      email: this.loginForm.get("email").value,
+      password: this.loginForm.get("password").value  
+    });
   }
 }
