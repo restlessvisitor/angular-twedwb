@@ -3,6 +3,7 @@ import { AuthListener } from "../auth-listener";
 import { AuthService } from "../auth.service";
 import { CartListener } from "../cart-listener";
 import { CartService } from "../cart.service";
+import { DrawerService } from "../drawer.service";
 import { Product } from "../product";
 
 @Component({
@@ -13,7 +14,9 @@ import { Product } from "../product";
 export class TopBarComponent implements CartListener, AuthListener {
   cartCount: number;
 
-  constructor(private cart: CartService, private auth: AuthService) {}
+  constructor(private cart: CartService,
+              private auth: AuthService,
+              private drawer: DrawerService) {}
 
   notifyUserChanged(userId: string): void {
     this.cart.getItems(items => {
@@ -32,6 +35,10 @@ export class TopBarComponent implements CartListener, AuthListener {
 
     this.cart.addCartListener(this);
     this.auth.addAuthListener(this);
+  }
+
+  toggleDrawer() {
+    this.drawer.toggleDrawer();
   }
 }
 

@@ -30,8 +30,11 @@ import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { DrawerComponent } from './drawer/drawer.component';
+import { DrawerService } from './drawer.service';
 
 @NgModule({
   imports: [
@@ -52,6 +55,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSidenavModule,
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
@@ -67,10 +71,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ProductDetailsComponent,
     CartComponent,
     ShippingComponent,
-    CartRemoveItemDialog
+    CartRemoveItemDialog,
+    DrawerComponent
   ],
   bootstrap: [AppComponent],
-  providers: [CartService, DatabaseService, AuthService]
+  providers: [CartService, DatabaseService, AuthService, DrawerService]
 })
 export class AppModule {}
 
