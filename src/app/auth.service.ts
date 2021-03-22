@@ -18,7 +18,7 @@ export class AuthService {
   signInAnonymously() {
     this.afAuth.signInAnonymously().then((user) => {
       this.credential = user;
-      this.listeners.forEach(listener => listener.notifyUserChanged(this.getUserId()));
+      this.listeners.forEach(listener => listener.notifyUserChanged(user));
     }).catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -28,8 +28,20 @@ export class AuthService {
 
   signIn(email: string, pwd: string) : void {
     this.afAuth.signInWithEmailAndPassword(email, pwd).then((user) => {
+      console.log("USER", user);
       this.credential = user;
-      this.listeners.forEach(listener => listener.notifyUserChanged(this.getUserId()));
+      this.listeners.forEach(listener => listener.notifyUserChanged(user));
+  
+      var usr = firebase.auth().currentUser;
+
+      usr.updateProfile({
+        displayName: "Ralf Müller",
+      }).then(function() {
+        console.log("OK");
+      }).catch(function(error) {
+        console.log(error);
+      });
+
     }).catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;

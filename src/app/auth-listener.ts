@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 export interface AuthListener {
-  notifyUserChanged(userId: string) : void;
+  notifyUserChanged(userCredential: firebase.auth.UserCredential) : void;
 }

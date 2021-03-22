@@ -5,6 +5,7 @@ import { CartListener } from "../cart-listener";
 import { CartService } from "../cart.service";
 import { DrawerService } from "../drawer.service";
 import { Product } from "../product";
+import firebase from "firebase";
 
 @Component({
   selector: "app-top-bar",
@@ -18,7 +19,7 @@ export class TopBarComponent implements CartListener, AuthListener {
               private auth: AuthService,
               private drawer: DrawerService) {}
 
-  notifyUserChanged(userId: string): void {
+  notifyUserChanged(user: firebase.auth.UserCredential): void {
     this.cart.getItems(items => {
       this.cartCount = items.length;
     });

@@ -20,7 +20,9 @@ export class DrawerComponent implements OnInit, AuthListener {
     private dialog: MatDialog
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.auth.addAuthListener(this);
+  }
 
   signIn() {
     // close drawer
@@ -37,11 +39,16 @@ export class DrawerComponent implements OnInit, AuthListener {
     });
   }
 
-  notifyUserChanged(_: string): void {
-    this.userCredential = this.auth.getUser();
+  notifyUserChanged(user: firebase.auth.UserCredential): void {
+    this.userCredential = user;
+    console.log("user", this.userCredential);
   }
 
   register() {
     this.drawer.toggleDrawer();
+  }
+
+  isAnonymous() : boolean {
+    return this.userCredential != null ? this.userCredential.user.isAnonymous : true;
   }
 }
