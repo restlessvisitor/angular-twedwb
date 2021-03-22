@@ -31,16 +31,6 @@ export class AuthService {
       console.log("USER", user);
       this.credential = user;
       this.listeners.forEach(listener => listener.notifyUserChanged(user));
-  
-      var usr = firebase.auth().currentUser;
-
-      usr.updateProfile({
-        displayName: "Ralf Müller",
-      }).then(function() {
-        console.log("OK");
-      }).catch(function(error) {
-        console.log(error);
-      });
 
     }).catch((error) => {
       var errorCode = error.code;
@@ -51,7 +41,7 @@ export class AuthService {
 
   signOut() {
     this.afAuth.signOut().then(() => {
-      this.credential = null;
+      this.signInAnonymously();
     });
 
   }

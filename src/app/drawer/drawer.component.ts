@@ -39,6 +39,14 @@ export class DrawerComponent implements OnInit, AuthListener {
     });
   }
 
+  signOut() {
+    // close drawer
+    this.drawer.toggleDrawer();
+
+    // sign the user out
+    this.auth.signOut();
+  }
+
   notifyUserChanged(user: firebase.auth.UserCredential): void {
     this.userCredential = user;
     console.log("user", this.userCredential);
