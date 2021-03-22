@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { AuthService } from "../auth.service";
+import { DrawerService } from "../drawer.service";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { SigninDialogComponent } from "./signin-dialog/signin-dialog.component";
 
 @Component({
   selector: "app-drawer",
@@ -6,8 +10,31 @@ import { Component, OnInit, ViewChild } from "@angular/core";
   styleUrls: ["./drawer.component.css"]
 })
 export class DrawerComponent implements OnInit {
-  constructor() {}
+
+  constructor(
+    private drawer: DrawerService, 
+    private auth: AuthService,
+    private dialog: MatDialog
+    ) {}
 
   ngOnInit() {
+  }
+
+  signIn() {
+    // close drawer
+    this.drawer.toggleDrawer();
+
+    // show sign in dialog
+    const dialogRef = this.dialog.open(SigninDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event == "login") {
+        
+      }
+    });
+  }
+
+  register() {
+    this.drawer.toggleDrawer();
   }
 }

@@ -9,10 +9,13 @@ import { DrawerService } from "./drawer.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent implements DrawerListener{
-  @ViewChild('drawer') private drawer: MatDrawer;
+export class AppComponent implements DrawerListener {
+  @ViewChild("drawer") private drawer: MatDrawer;
 
-  constructor(private auth: AuthService, private drawerService: DrawerService) {}
+  constructor(
+    private auth: AuthService,
+    private drawerService: DrawerService
+  ) {}
 
   ngOnInit() {
     this.drawerService.addDrawerListener(this);
@@ -20,9 +23,7 @@ export class AppComponent implements DrawerListener{
   }
 
   toggleDrawer(): void {
-    console.log("drawer", this.drawer.opened);
     this.drawer.toggle();
-    console.log("drawer", this.drawer.opened);
   }
 }
 

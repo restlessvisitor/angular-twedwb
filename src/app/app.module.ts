@@ -35,6 +35,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DrawerComponent } from './drawer/drawer.component';
 import { DrawerService } from './drawer.service';
+import { SigninDialogComponent } from './drawer/signin-dialog/signin-dialog.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { DrawerService } from './drawer.service';
     CartComponent,
     ShippingComponent,
     CartRemoveItemDialog,
-    DrawerComponent
+    DrawerComponent,
+    SigninDialogComponent
   ],
   bootstrap: [AppComponent],
   providers: [CartService, DatabaseService, AuthService, DrawerService]
