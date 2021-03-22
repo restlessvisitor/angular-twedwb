@@ -29,7 +29,7 @@ export class DrawerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.event == "login") {
-        
+        //this.auth.signIn("email", "password");
       }
     });
   }
