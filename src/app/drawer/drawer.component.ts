@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { AuthService } from "../auth.service";
 import { DrawerService } from "../drawer.service";
 import { MatDialog } from "@angular/material/dialog";
+import { NgDialogAnimationService } from "ng-dialog-animation";
 import { SigninDialogComponent } from "./signin-dialog/signin-dialog.component";
 import { AuthListener } from "../auth-listener";
 import firebase from "firebase";
@@ -29,7 +30,9 @@ export class DrawerComponent implements OnInit, AuthListener {
     this.drawer.toggleDrawer();
 
     // show sign in dialog
-    const dialogRef = this.dialog.open(SigninDialogComponent);
+    const dialogRef = this.dialog.open(SigninDialogComponent, {
+      animation:{to:"t"}
+    });
 
     // sign user in
     dialogRef.afterClosed().subscribe(data => {
