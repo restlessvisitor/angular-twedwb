@@ -1,3 +1,23 @@
 .drawer {
   width: 200px;
 }
+
+.content {
+  min-height: calc(100vh - 20px);
+  margin-bottom: -70px;;
+}
+
+.footer {
+  height: 30px;
+  background-color: #AAA;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.copyright {
+  vertical-align: center;
+  text-align: center;
+  font-size: 10px;
+  color: #FFF;
+}

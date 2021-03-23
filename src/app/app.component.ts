@@ -9,11 +9,7 @@ import { DrawerService } from "./drawer.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
-  animations: [
-    slideInAnimation
-    // animation triggers go here
-  ]
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements DrawerListener {
   @ViewChild("drawer") private drawer: MatDrawer;
