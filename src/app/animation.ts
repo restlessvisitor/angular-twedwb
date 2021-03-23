@@ -1,53 +1,31 @@
-import { animate, animateChild, group, query, style, transition, trigger } from "@angular/animations";
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  style,
+  transition,
+  trigger
+} from "@angular/animations";
 
-export const slideInAnimation =
-  trigger('routeAnimations', [
-    transition('HomePage <=> AboutPage', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%'
-        })
-      ]),
-      query(':enter', [
-        style({ left: '-100%' })
-      ]),
-      query(':leave', animateChild()),
-      group([
-        query(':leave', [
-          animate('300ms ease-out', style({ left: '100%' }))
-        ]),
-        query(':enter', [
-          animate('300ms ease-out', style({ left: '0%' }))
-        ])
-      ]),
-      query(':enter', animateChild()),
+export const slideInAnimation = trigger("routeAnimations", [
+  transition("CartPage <=> ShippingPage", [
+    style({ position: "relative" }),
+    query(":enter, :leave", [
+      style({
+        position: "fixed",
+        top: 0,
+        left: 0,
+        overflow: "hidden",
+        width: "100%"
+      })
     ]),
-    transition('* <=> FilterPage', [
-      style({ position: 'relative' }),
-      query(':enter, :leave', [
-        style({
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%'
-        })
-      ]),
-      query(':enter', [
-        style({ left: '-100%' })
-      ]),
-      query(':leave', animateChild()),
-      group([
-        query(':leave', [
-          animate('200ms ease-out', style({ left: '100%' }))
-        ]),
-        query(':enter', [
-          animate('300ms ease-out', style({ left: '0%' }))
-        ])
-      ]),
-      query(':enter', animateChild()),
-    ])
-  ]);
+    query(":enter", [style({ left: "-100%" })]),
+    query(":leave", animateChild()),
+    group([
+      query(":leave", [animate("3300ms ease-out", style({ left: "100%" }))]),
+      query(":enter", [animate("3300ms ease-out", style({ left: "0%" }))])
+    ]),
+    query(":enter", animateChild())
+  ])
+]);

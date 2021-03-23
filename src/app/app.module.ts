@@ -60,8 +60,8 @@ import { SigninDialogComponent } from "./drawer/signin-dialog/signin-dialog.comp
     RouterModule.forRoot([
       { path: "", component: ProductListComponent },
       { path: "products/:productId", component: ProductDetailsComponent },
-      { path: "cart", component: CartComponent },
-      { path: "shipping", component: ShippingComponent }
+      { path: "cart", component: CartComponent, data: {animation: 'CartPage'} },
+      { path: "shipping", component: ShippingComponent, data: {animation: 'ShippingPage'} }
     ])
   ],
   declarations: [
