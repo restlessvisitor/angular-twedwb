@@ -1,5 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
 import { MatDrawer } from "@angular/material/sidenav";
+import { RouterOutlet } from "@angular/router";
+import { slideInAnimation } from "./animation";
 import { AuthService } from "./auth.service";
 import { DrawerListener } from "./drawer-listener";
 import { DrawerService } from "./drawer.service";
@@ -7,7 +9,11 @@ import { DrawerService } from "./drawer.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  styleUrls: ["./app.component.css"],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent implements DrawerListener {
   @ViewChild("drawer") private drawer: MatDrawer;
@@ -24,6 +30,9 @@ export class AppComponent implements DrawerListener {
 
   toggleDrawer(): void {
     this.drawer.toggle();
+  }
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 }
 

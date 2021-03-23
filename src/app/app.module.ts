@@ -28,14 +28,14 @@ import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatInputModule } from "@angular/material/input";
 import { MatTableModule } from "@angular/material/table";
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { DrawerComponent } from './drawer/drawer.component';
-import { DrawerService } from './drawer.service';
-import { SigninDialogComponent } from './drawer/signin-dialog/signin-dialog.component';
+import { DrawerComponent } from "./drawer/drawer.component";
+import { DrawerService } from "./drawer.service";
+import { SigninDialogComponent } from "./drawer/signin-dialog/signin-dialog.component";
 
 @NgModule({
   imports: [

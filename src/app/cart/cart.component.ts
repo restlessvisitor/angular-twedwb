@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { CartService } from "../cart.service";
 import { FormBuilder } from "@angular/forms";
 import { Product } from "../product";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import {
   animate,
   state,
@@ -9,8 +11,6 @@ import {
   transition,
   trigger
 } from "@angular/animations";
-import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-cart",
@@ -63,7 +63,8 @@ export class CartComponent implements OnInit {
       if (result.event == "yes") {
         this.cartService.removeItem(product);
         this.snackBar.open(product.name + " removed", "Close", {
-          duration: 2000});
+          duration: 2000
+        });
       }
     });
   }
